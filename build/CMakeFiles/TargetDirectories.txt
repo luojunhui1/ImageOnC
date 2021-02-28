@@ -1,0 +1,3 @@
+/home/ljh/文档/FPGA/Test/build/CMakeFiles/rebuild_cache.dir
+/home/ljh/文档/FPGA/Test/build/CMakeFiles/edit_cache.dir
+/home/ljh/文档/FPGA/Test/build/CMakeFiles/run.dir
