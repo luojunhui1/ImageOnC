@@ -41,7 +41,7 @@
 #define ACTIVE(X) (1/(1+exp(-(X))))
 #define SOFTMAX(X,SUM) (X/SUM)
 
-#define LOOP_N 300        /* LOOP NUMBER */
+#define LOOP_N 500        /* LOOP NUMBER */
 #define E_MIN 0.00001    /* Cumulative error */
 #define LEARN_RATE1 0.3
 #define LEARN_RATE2 0.4
@@ -57,6 +57,7 @@ const char letterNames[35][20] = {"0","1","2","3","4","5","6","7","8","9","A","B
 #define SAVE_PARAM_PATH "/home/ljh/文档/FPGA/Test/param.txt"
 #define SAVE_PARAM_PATH1 "/home/ljh/文档/FPGA/Test/paramLetters.txt"
 
+#define SAVE_POOL 0
 #define TRAIN_LETTER 1
 //#define TRAIN_HAN 1
 #endif //FPGA_CONFIG_H

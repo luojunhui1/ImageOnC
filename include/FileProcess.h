@@ -27,12 +27,12 @@ public:
     DIR *dir;
     struct dirent *ptr;
 public:
-    FileReader(char* baseFileDir);
+    FileReader(const char* baseFileDir);
     ~FileReader();
     bool findNext(char* fileName);
 };
 
-FileReader::FileReader(char *basePath) {
+FileReader::FileReader(const char *basePath) {
     if ((dir = opendir(basePath)) == NULL) {
         perror("Open dir error...");
         exit(1);
@@ -57,7 +57,8 @@ bool FileReader::findNext(char* fileName)
         }
         else if(ptr->d_type == 4)    ///dir
         {
-            printf("Base File Directory including sub-directory");
+            printf("Base File Directory including sub-directory\n");
+            //if((ptr=readdir(dir)) == NULL)return false;
             return false;
         }
         return true;

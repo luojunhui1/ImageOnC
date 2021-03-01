@@ -39,7 +39,7 @@ public:
 
     void Update(const char* path);
     void Init();
-    void Display(const char* name, bool save);
+    void Display(const char* name, bool save, int count);
 };
 
 /**
@@ -110,7 +110,7 @@ void Process::Init()
     }
 }
 
-void Process::Display(const char* name = "", bool save = false)
+void Process::Display(const char* name = "", bool save = false, int count = 0)
 {
     Mat area0 = Mat(BLOCK_HEIGHT,BLOCK_WIDTH,CV_8UC1,area[0]);
     imshow("area0",area0);
@@ -146,31 +146,31 @@ void Process::Display(const char* name = "", bool save = false)
         memcpy(han,name,3);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%s.bmp", han);
+        sprintf(saveDir, "../Han/%s%d.bmp",han,count);
         imwrite(saveDir,area0);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[3]);
+        sprintf(saveDir, "../Letters/%c%d.bmp",name[3],count);
         imwrite(saveDir,area1);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[4]);
+        sprintf(saveDir, "../Letters/%c%d.bmp",  name[4], count);
         imwrite(saveDir,letter0);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[5]);
+        sprintf(saveDir, "../Letters/%c%d.bmp", name[5],  count);
         imwrite(saveDir,letter1);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[6]);
+        sprintf(saveDir, "../Letters/%c%d.bmp", name[6], count);
         imwrite(saveDir,letter2);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[7]);
+        sprintf(saveDir, "../Letters/%c%d.bmp", name[7], count);
         imwrite(saveDir,letter3);
 
         memset(saveDir,'\0',30);
-        sprintf(saveDir, "../Letters/%c.bmp", name[8]);
+        sprintf(saveDir, "../Letters/%c%d.bmp", name[8], count);
         imwrite(saveDir,letter4);
     }
 }

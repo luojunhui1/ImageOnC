@@ -228,8 +228,11 @@ void Net::Pool()
         }
         accum += pool1(k,0);
     }
-//    eigen2cv(accum,pool1Src);
-//    normalize(pool1Src,pool1Src,0,255,NORM_MINMAX);
+
+#if SAVE_POOL==1
+    eigen2cv(accum,pool1Src);
+    normalize(pool1Src,pool1Src,0,255,NORM_MINMAX);
+#endif
 
     for(int i = 0; i < POOL_N2_H; i++)
     {
@@ -241,9 +244,10 @@ void Net::Pool()
             //pool2(i,j + POOL_N2_W/2) = (accum.block(i*2,j*2,MAXPOOLKS,MAXPOOLKS)).maxCoeff();
         }
     }
-
-//    eigen2cv(pool2,pool2Src);
-//    normalize(pool2Src,pool2Src,0,255,NORM_MINMAX);
+#if SAVE_POOL==1
+    eigen2cv(pool2,pool2Src);
+    normalize(pool2Src,pool2Src,0,255,NORM_MINMAX);
+#endif
 }
 
 void Net::Train()

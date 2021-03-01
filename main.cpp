@@ -38,26 +38,28 @@ int main() {
     saveImageName =  (char*)malloc(sizeof(char)*20);
     double possibility = 1;
 
+    int count = 0;
     while(fileReader.findNext(fileDirect))
     {
         sprintf(ImagePath, "../database/%s", fileDirect);
         pro.Update(ImagePath);
-
+//        pro.Display(fileDirect,true,count++);
         possibility = 1;
         memset(name,'\0',20);
         memset(letter,'\0',4);
         memset(saveImageName,'\0',20);
 
         possibility *= model.Fit(pro.area[0],BLOCK_HEIGHT,BLOCK_WIDTH,letter,true);
-//        strcat(saveImageName,letter);
-//        strcat(saveImageName,"pool1.jpg");
-//        imwrite(saveImageName,pool1Src);
-//
-//        memset(saveImageName,'\0',20);
-//        strcat(saveImageName,letter);
-//        strcat(saveImageName,"pool2.jpg");
-//        imwrite(saveImageName,pool2Src);
+#if SAVE_POOL==1
+        strcat(saveImageName,letter);
+        strcat(saveImageName,"pool1.jpg");
+        imwrite(saveImageName,pool1Src);
 
+        memset(saveImageName,'\0',20);
+        strcat(saveImageName,letter);
+        strcat(saveImageName,"pool2.jpg");
+        imwrite(saveImageName,pool2Src);
+#endif
         strcat(name,letter);
 
         memset(letter,'\0',4);
@@ -69,17 +71,17 @@ int main() {
         {
             memset(letter,'\0',4);
             possibility *= model.Fit(pro.letters[i],BLOCK_HEIGHT,BLOCK_WIDTH,letter,false);
+#if SAVE_POOL==1
+            memset(saveImageName,'\0',20);
+            strcat(saveImageName,letter);
+            strcat(saveImageName,"pool1.jpg");
+            imwrite(saveImageName,pool1Src);
 
-//            memset(saveImageName,'\0',20);
-//            strcat(saveImageName,letter);
-//            strcat(saveImageName,"pool1.jpg");
-//            imwrite(saveImageName,pool1Src);
-//
-//            memset(saveImageName,'\0',20);
-//            strcat(saveImageName,letter);
-//            strcat(saveImageName,"pool2.jpg");
-//            imwrite(saveImageName,pool2Src);
-
+            memset(saveImageName,'\0',20);
+            strcat(saveImageName,letter);
+            strcat(saveImageName,"pool2.jpg");
+            imwrite(saveImageName,pool2Src);
+#endif
             strcat(name,letter);
         }
 
@@ -91,7 +93,7 @@ int main() {
         {
             imshow("src",src);
         }
-    }
+   }
 //    Mat src = imread("/home/ljh/文档/FPGA/Test/1613009717927.jpg");
 //    Mat dst,o,al;
 //    pyrDown(src,dst);

@@ -24,6 +24,8 @@ int main() {
 
     char *name;
     name =  (char*)malloc(sizeof(char)*4);
+    char *saveImageName;
+    saveImageName =  (char*)malloc(sizeof(char)*20);
 
     printf("[BPNN] TRAIN STARTING...\n");
     int train_c = 0;
@@ -35,7 +37,7 @@ int main() {
 #endif
 
 #ifdef TRAIN_LETTER
-    FileReader fileReader("../Letters");
+    FileReader fileReader("../Letters_Test");
 #endif
         E = 0;
         while(fileReader.findNext(fileDirect)) {
@@ -44,9 +46,9 @@ int main() {
 #endif
 
 #ifdef TRAIN_LETTER
-    sprintf(ImagePath, "../Letters/%s", fileDirect);
+    sprintf(ImagePath, "../Letters_Test/%s", fileDirect);
+    //printf("%s\n",fileDirect);
 #endif
-
             trans.Init(ImagePath);
 
             memset(name, '\0', 4);
@@ -62,6 +64,17 @@ int main() {
             net.Conv();
             net.Pool();
             net.Train();
+#if SAVE_POOL==1
+            memset(saveImageName,'\0',20);
+            strcat(saveImageName,name);
+            strcat(saveImageName,"pool1.jpg");
+            imwrite(saveImageName,pool1Src);
+
+            memset(saveImageName,'\0',20);
+            strcat(saveImageName,name);
+            strcat(saveImageName,"pool2.jpg");
+            imwrite(saveImageName,pool2Src);
+#endif
             E += net.ek;
         }
 
