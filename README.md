@@ -32,11 +32,17 @@
 └── unsupported
 ```
 **Config.h**: 用于约定网络参数和一些全局变量，便于项目代码组织
+
 **Eigen**: Eigen库代码
+
 **unsupported**: Eigen库代码,原为使用Tensor类表示高维矩阵，但Tensor使用不便，实际未使用
+
 **FileProcess**: 用于系统文件操作，主要是查询文件夹下的所有文件并遍历
+
 **ModelTrans**: 用于从图像的数据矩阵中读取BGR图像并将其分割、保存
+
 **Net.h**: 神经网络的定义、训练及使用部分
+
 **SaveLoad**: 用于从图像路径读取bmp图像并分通道保存图像数据部分
 
 ## 3. 实际效果
