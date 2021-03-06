@@ -60,6 +60,7 @@ int main() {
 #ifdef TRAIN_LETTER
     memcpy(name, fileDirect, 1);
 #endif
+
             net.InputSample(trans.channelImage[0], trans.getHeight(), trans.getWidth(), name);
             net.Conv();
             net.Pool();
@@ -74,6 +75,7 @@ int main() {
             strcat(saveImageName,name);
             strcat(saveImageName,"pool2.jpg");
             imwrite(saveImageName,pool2Src);
+
 #endif
             E += net.ek;
         }
